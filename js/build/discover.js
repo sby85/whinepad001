@@ -28,6 +28,18 @@ var _FormInput = require('./components/FormInput');
 
 var _FormInput2 = _interopRequireDefault(_FormInput);
 
+var _Form = require('./components/Form');
+
+var _Form2 = _interopRequireDefault(_Form);
+
+var _Actions = require('./components/Actions');
+
+var _Actions2 = _interopRequireDefault(_Actions);
+
+var _Dialog = require('./components/Dialog');
+
+var _Dialog2 = _interopRequireDefault(_Dialog);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _reactDom2.default.render(_react2.default.createElement(
@@ -222,6 +234,59 @@ _reactDom2.default.render(_react2.default.createElement(
           _react2.default.createElement(_FormInput2.default, { type: 'text' })
         )
       )
+    )
+  ),
+  _react2.default.createElement(
+    'h2',
+    null,
+    'Form'
+  ),
+  _react2.default.createElement(_Form2.default, {
+    fields: [{ label: 'score', type: 'rating', id: 'rateme' }, { label: 'greeting', id: 'freetext' }],
+    initialData: { rateme: 4, freetext: 'Hello!' }
+  }),
+  _react2.default.createElement(
+    'h2',
+    null,
+    '\u64CD\u4F5C'
+  ),
+  _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(_Actions2.default, { onAction: function onAction(type) {
+        return alert(type);
+      } })
+  ),
+  _react2.default.createElement(
+    'h2',
+    null,
+    'Dialog'
+  ),
+  _react2.default.createElement(
+    _Dialog2.default,
+    {
+      header: 'simple sample',
+      onAction: function onAction(type) {
+        return alert(type);
+      }
+    },
+    'Hello!'
+  ),
+  _react2.default.createElement(
+    _Dialog2.default,
+    {
+      header: 'Confirm-Button',
+      hasCancel: false,
+      confirmLabel: 'Label',
+      onAction: function onAction(type) {
+        return alert(type);
+      }
+    },
+    'for example ',
+    _react2.default.createElement(
+      _Button2.default,
+      null,
+      'Button'
     )
   )
 ), document.getElementById('pad'));

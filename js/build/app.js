@@ -1,4 +1,8 @@
-'use strict';
+"use strict";
+
+var _Logo = require('./components/Logo');
+
+var _Logo2 = _interopRequireDefault(_Logo);
 
 var _react = require('react');
 
@@ -8,32 +12,35 @@ var _reactDom = require('react-dom');
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _Logo = require('./components/Logo');
+var _Whinepad = require('./components/Whinepad');
 
-var _Logo2 = _interopRequireDefault(_Logo);
+var _Whinepad2 = _interopRequireDefault(_Whinepad);
 
-var _Excel = require('./components/Excel');
+var _schema = require('./schema');
 
-var _Excel2 = _interopRequireDefault(_Excel);
+var _schema2 = _interopRequireDefault(_schema);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var headers = localStorage.getItem('headers');
-var data = localStorage.getItem('data');
+var data = JSON.parse(localStorage.getItem('data'));
 
-if (!headers) {
-  headers = ['title', 'year', 'score', 'comment'];
-  data = [['test', '2015', '3', 'abcdefg']];
+// default example data, read from the schema
+if (!data) {
+  data = {};
+  _schema2.default.forEach(function (item) {
+    return data[item.id] = item.sample;
+  });
+  data = [data];
 }
 
 _reactDom2.default.render(_react2.default.createElement(
   'div',
   null,
   _react2.default.createElement(
-    'h1',
-    null,
+    'div',
+    { className: 'app-header' },
     _react2.default.createElement(_Logo2.default, null),
-    ' Welcome to the Whinepad!'
+    ' Welcome to Whinepad!'
   ),
-  _react2.default.createElement(_Excel2.default, { headers: headers, initialData: data })
+  _react2.default.createElement(_Whinepad2.default, { schema: _schema2.default, initialData: data })
 ), document.getElementById('pad'));

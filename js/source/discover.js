@@ -7,6 +7,10 @@ import Button from './components/Button';
 import Suggest from './components/Suggest';
 import Rating from './components/Rating';
 import FormInput from './components/FormInput';
+import Form from './components/Form';
+import Actions from './components/Actions';
+import Dialog from './components/Dialog';
+
 
 ReactDOM.render(
   <div style={ {padding:'20px'} }>
@@ -57,6 +61,29 @@ ReactDOM.render(
         <td><FormInput type="text" /></td>
       </tr>
     </tbody></table>
+    <h2>Form</h2>
+    <Form
+      fields={[
+        {label: 'score', type: 'rating', id: 'rateme'},
+        {label: 'greeting', id: 'freetext'},
+      ]}
+      initialData={ {rateme: 4, freetext: 'Hello!'} }
+    />
+    <h2>操作</h2>
+    <div><Actions onAction={type => alert(type)} /></div>
+    <h2>Dialog</h2>
+    <Dialog
+      header="simple sample"
+      onAction={type => alert(type)}
+    >Hello!</Dialog>
+    <Dialog
+      header="Confirm-Button"
+      hasCancel={false}
+      confirmLabel="Label"
+      onAction={type => alert(type)}
+    >
+      for example <Button>Button</Button>
+    </Dialog>
     
     {/* add other components below */}
   </div>,
